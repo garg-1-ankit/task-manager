@@ -1,4 +1,4 @@
-package com.example.TaskManager1.Entity;
+package com.example.Task.Manager.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,15 +30,17 @@ public class Customer {
     @Column(name = "customer_dob",nullable = false)
     private LocalDate dob;
 
-    @Column(name = "customer_phoneNumber",nullable = false)
+    @Column(name = "customer_phone_Number",nullable = false)
     private String phoneNumber;
 
+    @Column(name = "is_archived",nullable = false)
+    private Boolean isArchived = false;
+
     @CreationTimestamp
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    @Column(name = "is_archived",nullable = false)
-    private boolean isArchived;
 }

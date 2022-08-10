@@ -1,4 +1,4 @@
-package com.example.TaskManager1;
+package com.example.Task.Manager;
 
 public class Routes {
     public static final String INITIAL = "/";

@@ -1,4 +1,4 @@
-package com.example.TaskManager1.Dto;
+package com.example.Task.Manager.Dto;
 
 import lombok.Data;
 

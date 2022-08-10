@@ -1,10 +1,9 @@
-package com.example.TaskManager1.Controller;
+package com.example.Task.Manager.Controller;
 
-import com.example.TaskManager1.Dto.RequestDto;
-import com.example.TaskManager1.Dto.ResponseDto;
-import com.example.TaskManager1.Entity.Customer;
-import com.example.TaskManager1.Routes;
-import com.example.TaskManager1.Service.CustomerService;
+import com.example.Task.Manager.Dto.RequestDto;
+import com.example.Task.Manager.Dto.ResponseDto;
+import com.example.Task.Manager.Routes;
+import com.example.Task.Manager.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ public class CustomerController{
     }
 
     @RequestMapping(Routes.CUSTOMER_BASE)
-    public List<ResponseDto> getAllCustomers() {
+    public ResponseDto getAllCustomers() {
         return customerService.getAllCustomers();
     }
 
