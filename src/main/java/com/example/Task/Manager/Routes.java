@@ -9,4 +9,7 @@ public class Routes {
     public static final String UPDATE_TASK ="/updateTask/{taskId}";
     public static final String FIND_TASK ="/findTask/{taskId}";
     public static final String GET_TASK ="/getTask";
+    public static final String GET_ACTIVE_TASK = "/getActiveTask";
+    public static final String GET_MULTIPLE_TASK = "/getMultipleTask";
+    public static final String TOGGLE_TASK_ACTIVATION = "/toggleActivation/{taskId}";
 }

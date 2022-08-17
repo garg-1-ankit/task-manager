@@ -2,10 +2,11 @@ package com.example.Task.Manager.Controller;
 
 import com.example.Task.Manager.Dto.ResponseDto;
 import com.example.Task.Manager.Dto.TaskDto;
+import com.example.Task.Manager.Dto.TaskRequestDto;
+import com.example.Task.Manager.Entity.Task;
 import com.example.Task.Manager.Routes;
 import com.example.Task.Manager.Service.TaskService;
 import com.example.Task.Manager.converter.TaskConverter;
-import com.example.Task.Manager.entity.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,15 +35,27 @@ public class TaskController {
         return taskService.findTaskById(taskId);
     }
 
+    @GetMapping(Routes.GET_ACTIVE_TASK)
+    public ResponseDto getActiveTask(){
+        return taskService.getactiveTask();
+    }
+    @PostMapping(Routes.GET_MULTIPLE_TASK)
+    public ResponseDto findMultipleTask(@RequestBody TaskRequestDto taskRequestDto){
+        return taskService.findMultipleTask(taskRequestDto);
+    }
     @DeleteMapping(Routes.DELETE_TASK)
-    public void deleteTask(@PathVariable Long taskId){
-         taskService.deleteTask(taskId);
+    public ResponseDto deleteTask(@PathVariable Long taskId){
+         return taskService.deleteTask(taskId);
     }
 
     @PutMapping(Routes.UPDATE_TASK)
-    public void updateTask(@RequestBody TaskDto taskDto, @PathVariable Long taskId){
-        taskService.updateTask(taskDto,taskId);
+    public ResponseDto updateTask(@RequestBody TaskDto taskDto, @PathVariable Long taskId){
+        return taskService.updateTask(taskDto,taskId);
     }
 
+    @PutMapping(Routes.TOGGLE_TASK_ACTIVATION)
+    public ResponseDto toggleActivation(@PathVariable Long taskId){
+        return taskService.toggleActivation(taskId);
+    }
 
 }

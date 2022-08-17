@@ -1,7 +1,8 @@
 package com.example.Task.Manager.converter;
 
 import com.example.Task.Manager.Dto.TaskDto;
-import com.example.Task.Manager.entity.Task;
+import com.example.Task.Manager.Entity.Task;
+import com.example.Task.Manager.Entity.Task;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class TaskConverter {
         TaskDto dto = new TaskDto();
         dto.setTaskTitle(task.getTaskTitle());
         dto.setTaskDescription(task.getTaskDescription());
+        dto.setCustomerId(task.getCustomerId());
         dto.setTaskPriority(task.getTaskPriority());
         dto.setArchived(task.getIsArchived());
         return dto;
@@ -25,6 +27,7 @@ public class TaskConverter {
         Task newTask = new Task();
         newTask.setTaskTitle(dto.getTaskTitle());
         newTask.setTaskDescription(dto.getTaskDescription());
+        newTask.setCustomerId(dto.getCustomerId());
         newTask.setTaskPriority(dto.getTaskPriority());
         newTask.setIsArchived(dto.isArchived());
         return newTask;

@@ -1,8 +1,9 @@
-package com.example.Task.Manager.entity;
+package com.example.Task.Manager.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -30,7 +31,7 @@ public class Task {
     @Column(name = "task_priority", columnDefinition = "int not null")
     private int taskPriority;
 
-    @Column(name = "customer_id", nullable = false, updatable = false)
+    @Column(name = "customer_id",insertable = false,updatable = false)
     private Long customerId;
 
     @CreationTimestamp
@@ -43,5 +44,10 @@ public class Task {
 
     @Column(name = "is_archived")
     private Boolean isArchived = false;
+
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="customer_id",referencedColumnName = "customer_id")
+    private Customer customer_details;
 
 }
