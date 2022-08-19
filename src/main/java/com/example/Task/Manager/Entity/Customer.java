@@ -61,8 +61,7 @@ public class Customer {
     @OneToMany(
             mappedBy = "customer_details",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY
+            orphanRemoval = true
     )
     //@JoinColumn(name="customer_id",referencedColumnName = "customer_id")
     private List<Task> task = new ArrayList<>();
