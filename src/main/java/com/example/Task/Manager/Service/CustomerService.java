@@ -1,7 +1,9 @@
 package com.example.Task.Manager.Service;
 
 
+
 import com.example.Task.Manager.Dto.*;
+
 import com.example.Task.Manager.Entity.Customer;
 import com.example.Task.Manager.Repositorty.CustomerRepository;
 import com.example.Task.Manager.converter.Convertdto;
@@ -74,6 +76,7 @@ public class CustomerService {
         }else throw new ResourceNotFoundException("Please input correct Id");
     }
 
+
     public ResponseDto toggleCustomerById(Long Id) {
         if(Id !=null) {
             ResponseDto responseDto =new ResponseDto();
@@ -108,4 +111,5 @@ public class CustomerService {
         responseDto.setMeta(metaDTO);
         return responseDto;
     }
+
 }

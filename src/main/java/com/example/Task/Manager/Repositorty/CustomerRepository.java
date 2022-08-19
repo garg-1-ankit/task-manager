@@ -14,4 +14,5 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
     List<JoinResponseDto> getActiveCustomer();
     @Query("select new com.example.Task.Manager.Dto.JoinResponseDto(t.taskId, t.taskTitle, t.taskDescription, t.taskPriority, t.createdAt,t.customerId,c.name, c.email, c.dob, c.phoneNumber) from Customer c join c.task t where c.Id IN :cid")
     List<JoinResponseDto> findMultipleCustomer(@Param("cid") List<Long> cid);
+
 }

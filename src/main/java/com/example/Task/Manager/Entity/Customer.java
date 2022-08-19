@@ -4,14 +4,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import lombok.ToString;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 import java.util.ArrayList;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +26,9 @@ import java.util.Set;
 @Entity
 @Table(name="customer_details")
 public class Customer {
+
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id",updatable = false,nullable = false)
     private long Id;
@@ -50,6 +56,7 @@ public class Customer {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+
     @ToString.Exclude
     @OneToMany(
             mappedBy = "customer_details",
@@ -59,5 +66,6 @@ public class Customer {
     )
     //@JoinColumn(name="customer_id",referencedColumnName = "customer_id")
     private List<Task> task = new ArrayList<>();
+
 
 }

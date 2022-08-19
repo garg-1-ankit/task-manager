@@ -46,7 +46,9 @@ public class Task {
     private Boolean isArchived = false;
 
     @ToString.Exclude
+
     @ManyToOne
+
     @JoinColumn(name="customer_id",referencedColumnName = "customer_id")
     private Customer customer_details;
 
