@@ -1,9 +1,9 @@
 package com.example.Task.Manager.Service;
 
 
-import com.example.Task.Manager.Dto.MetaDTO;
-import com.example.Task.Manager.Dto.RequestDto;
-import com.example.Task.Manager.Dto.ResponseDto;
+
+import com.example.Task.Manager.Dto.*;
+
 import com.example.Task.Manager.Entity.Customer;
 import com.example.Task.Manager.Repositorty.CustomerRepository;
 import com.example.Task.Manager.converter.Convertdto;
@@ -75,4 +75,41 @@ public class CustomerService {
             return ResponseEntity.ok().build();
         }else throw new ResourceNotFoundException("Please input correct Id");
     }
+
+
+    public ResponseDto toggleCustomerById(Long Id) {
+        if(Id !=null) {
+            ResponseDto responseDto =new ResponseDto();
+            Customer existCustomer =this.customerRepository.findById(Id)
+                    .orElseThrow(() ->new ResourceNotFoundException("User not found with id :" + Id));
+            boolean resultArchived = existCustomer.getIsArchived();
+            existCustomer.setIsArchived(!resultArchived);
+            customerRepository.save(existCustomer);
+            responseDto.setData(existCustomer.toString());
+            MetaDTO metaDTO =new MetaDTO("success", "200");
+            responseDto.setMeta(metaDTO);
+            return responseDto;
+        }else throw new ResourceNotFoundException("Please enter correct Id");
+    }
+    public ResponseDto getactiveCustomer() {
+        ResponseDto responseDto = new ResponseDto();
+        List<JoinResponseDto> result = customerRepository.getActiveCustomer();
+        responseDto.setData(result
+                .stream().collect(Collectors.toList()).toString());
+        MetaDTO metaDTO =new MetaDTO("success","200");
+        responseDto.setMeta(metaDTO);
+        return responseDto;
+    }
+
+    public ResponseDto findMultipleCustomer(CustomerRequestDto customerRequestDto){
+        ResponseDto responseDto = new ResponseDto();
+        List<Long> id = customerRequestDto.getCustomerId();
+        List<JoinResponseDto> result = customerRepository.findMultipleCustomer(id);
+        responseDto.setData(result
+                .stream().collect(Collectors.toList()).toString());
+        MetaDTO metaDTO = new MetaDTO("failure","200");
+        responseDto.setMeta(metaDTO);
+        return responseDto;
+    }
+
 }

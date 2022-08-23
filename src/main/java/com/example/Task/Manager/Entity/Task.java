@@ -31,7 +31,7 @@ public class Task {
     @Column(name = "task_priority", columnDefinition = "int not null")
     private int taskPriority;
 
-    @Column(name = "customer_id",insertable = false,updatable = false)
+    @Column(name = "customer_details_customer_id")
     private Long customerId;
 
     @CreationTimestamp
@@ -47,7 +47,12 @@ public class Task {
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="customer_id",referencedColumnName = "customer_id")
+    @JoinColumn(
+            name="customer_details_customer_id",
+            referencedColumnName = "customer_id",
+            insertable = false,
+            updatable = false
+    )
     private Customer customer_details;
 
 }

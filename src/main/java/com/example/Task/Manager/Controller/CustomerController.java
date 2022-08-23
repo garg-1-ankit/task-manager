@@ -1,5 +1,6 @@
 package com.example.Task.Manager.Controller;
 
+import com.example.Task.Manager.Dto.CustomerRequestDto;
 import com.example.Task.Manager.Dto.RequestDto;
 import com.example.Task.Manager.Dto.ResponseDto;
 import com.example.Task.Manager.Routes;
@@ -45,5 +46,22 @@ public class CustomerController{
     public void deleteCustomers(@PathVariable Long Id) {
         customerService.deleteCustomer(Id);
     }
+
+
+    @GetMapping(Routes.CUSTOMER_ACTIVE)
+    public ResponseDto getActiveTask(){
+        return customerService.getactiveCustomer();
+    }
+
+    @PostMapping(Routes.CUSTOMER_DETAILS_ID)
+    public ResponseDto findMultipleTask(@RequestBody CustomerRequestDto customerRequestDto){
+        return customerService.findMultipleCustomer(customerRequestDto);
+    }
+
+    @GetMapping(Routes.CUSTOMER_TOGGLE_ID)
+    public ResponseDto toggleCustomerById(@PathVariable Long Id){
+        return customerService.toggleCustomerById(Id);
+    }
+
 }
 
